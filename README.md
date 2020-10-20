@@ -4,41 +4,68 @@
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
+| nickname           | string              | null: false             |
 | email              | string              | null: false             |
 | password           | string              | null: false             |
-| name               | string              | null: false             |
-| profile            | text                | null: false             |
-| occupation         | text                | null: false             |
-| position           | text                | null: false             |
+| last_name          | string              | null: false             |
+| first_name         | string              | null: false             |
+| last_name_kana     | string              | null: false             |
+| first_name_kana    | string              | null: false
+| birth_date         | string              | null: false
+
+
 
 ### Association
 
-* has_many :prototypes
-* has_many :comments
+* has_many :items
+* has_many :purchases
 
-## prototypes table
+## items table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| title                               | string     | null: false       |
-| catch_copy                          | text       | null: false       |
-| concept                             | text       | null: false       |
-| user                                | references | foreign_key: true |
+| image                               | string     | null: false       |
+| name                                | string     | null: false       |
+| discription                         | text       | null: false       |
+| category                            | integer    | null: false       |
+| condition                           | integer    | null: false       |
+| postage_payer                       | integer    | null: false       |
+| prefecture                          | integer    | null: false       |
+| handing_time                        | integer    | null: false       |
+| price                               | integer    | null: false       |
+| user                                | references |
+         
+
 
 ### Association
 
+- has_one :purchases
 - belongs_to :user
-- has_many :comments
 
-## comments table
 
-| Column      | Type       | Options           |
-|-------------|------------|-------------------|
-| text        | text       | null: false       |
-| prototype   | references | foreign_key: true |
-| user        | references | foreign_key: true |
+## purchases table
+
+| Column      | Type       | Options                        |
+|-------------|------------|-------------------             |
+| user        | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :prototype
+- has_one :address
 - belongs_to :user
+
+## addresses table
+
+
+| Column             | Type                | Options                        |
+|--------------------|---------------------|-------------------------       |
+| post_code          | string              | null: false                    |
+| city               | string              | null: false                    |
+| building_name      | string              |                                |
+| phone_number       | string              | null: false                    |
+| purchase           | references          | null: false, foreign_key: true |
+
+
+### Association
+- has_one :purchases
