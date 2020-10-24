@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  root to: "furimas#index"
+  get 'items/index'
+  devise_for :users
+  root to: "items#index"
+  
 end
