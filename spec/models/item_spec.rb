@@ -13,7 +13,7 @@ RSpec.describe Item, type: :model do
         end
 
         it 'priceが、半角数字であれば登録できること' do
-          @item.price = "1000"
+          @item.price = 1000
           expect(@item).to be_valid
         end
       end
