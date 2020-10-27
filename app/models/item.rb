@@ -17,8 +17,8 @@ with_options numericality: { other_than: 1 } do
   validates :prefecture_id
   validates :handing_time_id
 end
-  validates :price, numericality: { greater_than: 300 }
-  validates :price, numericality: { less_than: 9_999_999 }
+  validates :price, numericality: { greater_than: 299 }
+  validates :price, numericality: { less_than: 10000000 }
 
   has_one :purchase
   belongs_to :user
