@@ -1,18 +1,22 @@
 class Item < ApplicationRecord
-  validates :name, presence: true
-  validates :discription, presence: true
-  validates :category_id, presence: true
-  validates :condition_id, presence: true
-  validates :postage_payer_id, presence: true
-  validates :prefecture_id, presence: true
-  validates :handing_time_id, presence: true
-  validates :price, presence: true, numericality: { with: /\A[0-9]+\z/ }
-  validates :image, presence: true
-  validates :category_id, numericality: { other_than: 1 }
-  validates :condition_id, numericality: { other_than: 1 }
-  validates :postage_payer_id, numericality: { other_than: 1 }
-  validates :prefecture_id, numericality: { other_than: 1 }
-  validates :handing_time_id, numericality: { other_than: 1 }
+with_options presence: true do
+   validates :name
+   validates :discription
+   validates :category_id
+   validates :condition_id
+   validates :postage_payer_id
+   validates :prefecture_id
+   validates :handing_time_id
+   validates :price, numericality: { with: /\A[0-9]+\z/ }
+   validates :image
+end
+with_options numericality: { other_than: 1 } do 
+  validates :category_id
+  validates :condition_id
+  validates :postage_payer_id
+  validates :prefecture_id
+  validates :handing_time_id
+end
   validates :price, numericality: { greater_than: 300 }
   validates :price, numericality: { less_than: 9_999_999 }
 
