@@ -66,9 +66,9 @@ RSpec.describe PurchaseAddress, type: :model do
 
 
           it 'item_idが空では登録できないこと' do
-              @purchase_address.item_id = nil
-              @purchase_address.valid?
-              expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
+            @purchase_address.item_id = nil
+            @purchase_address.valid?
+            expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
           end
 
           it 'tokenが空では登録できないこと' do
