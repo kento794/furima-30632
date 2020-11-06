@@ -5,12 +5,12 @@ class PurchaseAddress
     with_options presence: true do    
         validates :user_id
         validates :item_id
-        validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/ }                
-        validates :prefecture_id, numericality: { other_than: 1 }
+        validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "Input correctly" }                
+        validates :prefecture_id, numericality: { other_than: 1, message: "Select" }
         validates :city          
         validates :address
         validates :phone_number, format: { with: /\A\d{11}\z/ }             
-        validates :token
+        validates :token, presence: {message: "can't be blank"}
     end
     
 
